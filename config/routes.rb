@@ -1,9 +1,12 @@
 XfittrackerWeb::Application.routes.draw do
-  get "static_pages/home"
+  get "users/new"
 
-  get "static_pages/pastwod"
+  root to: 'static_pages#home'
 
-  get "static_pages/performance"
+  match '/signup',  to: 'users#new'
+
+  match '/pastwod',    to: 'static_pages#pastwod'
+  match '/performance',   to: 'static_pages#performance'
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

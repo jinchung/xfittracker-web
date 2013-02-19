@@ -1,24 +1,24 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+  subject { page }
+  
   describe "Home Page" do
-    it "should have the content 'XFit Tracker'" do
-      visit '/static_pages/home'
-      page.should have_content('XFit Tracker')
-    end
+    before { visit root_path } 
+    it { should have_selector('h1',    text: 'XFit Tracker') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector 'title', text: '| Home' }
   end
   
   describe "Past WODs Page" do
-    it "should have the content 'Past WODs'" do
-      visit '/static_pages/pastwod'
-      page.should have_content('Past WODs')
-    end
+    before { visit pastwod_path } 
+    it { should have_selector('h1',    text: 'Past WODs') }
+    it { should have_selector('title', text: full_title('Past WODs')) }
   end
   
   describe "Performance Page" do
-    it "should have the content 'Performance'" do
-      visit '/static_pages/performance'
-      page.should have_content('Performance')
-    end
+    before { visit performance_path } 
+    it { should have_selector('h1',    text: 'Performance') }
+    it { should have_selector('title', text: full_title('Performance')) }
   end
 end
